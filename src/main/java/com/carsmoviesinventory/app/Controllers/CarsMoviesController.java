@@ -34,7 +34,7 @@ public class CarsMoviesController{
                 Pageable pageable = PageRequest.of(page, size, Sort.by(parseSort(sort)));
                 return carsMoviesService.getAllMovies(pageable);
             } catch (IllegalArgumentException e) {
-                return ResponseEntity.badRequest().body("Invalid sorting direction. Use 'asc' or 'desc'.");
+                return ResponseEntity.badRequest().body("Innvalid sorting direction. Use 'asc' or 'desc'.");
             }
         }
 
