@@ -18,7 +18,7 @@ public class CarsMoviesEntity {
 
     @JsonProperty("carMovieName")
     @NotBlank(message = "Movie name is required")
-    @Size(min = 3, max = 100, message = "Movie name must be between 3 and 100 characters")
+    @Size(min = 3, max = 100, message = "Movies name must be between 3 and 100 characters")
     private String carMovieName;
 
     @JsonProperty("carMovieYear")
