@@ -1,7 +1,7 @@
 package com.carsmoviesinventory.app.Controllers;
 
-import com.carsmoviesinventory.app.Entities.CarsMoviesEntity;
-import com.carsmoviesinventory.app.Services.CarsMoviesService;
+import com.carsmoviesinventory.app.Entities.ExpensiveCarEntity;
+import com.carsmoviesinventory.app.Services.ExpensiveCarService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -15,24 +15,24 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/carsmovies")
+@RequestMapping("/api/v1/expensivecars")
 @Validated
-public class CarsMoviesController{
+public class ExpensiveCarController{
 
-    private final CarsMoviesService carsMoviesService;
+    private final ExpensiveCarService expensiveCarService;
 
-    public CarsMoviesController(CarsMoviesService carsMoviesService) {
-        this.carsMoviesService = carsMoviesService;
+    public ExpensiveCarController(ExpensiveCarService expensiveCarService) {
+        this.expensiveCarService = expensiveCarService;
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllCarsMovies(
+    public ResponseEntity<?> getAllCars(
         @RequestParam(defaultValue = "0") int page,
         @RequestParam(defaultValue = "5") int size,
-        @RequestParam(defaultValue = "carMovieName,asc") String[] sort) {
+        @RequestParam(defaultValue = "brand,asc") String[] sort) {
         try {
                 Pageable pageable = PageRequest.of(page, size, Sort.by(parseSort(sort)));
-                return carsMoviesService.getAllMovies(pageable);
+                return expensiveCarService.getAllCars(pageable);
             } catch (IllegalArgumentException e) {
                 return ResponseEntity.badRequest().body("Innvalid sorting direction. Use 'asc' or 'desc'.");
             }
@@ -40,7 +40,7 @@ public class CarsMoviesController{
 
     private Sort.Order parseSort(String[] sort) {
         if (sort.length < 2) {
-            throw new IllegalArgumentException("Sort parameter must have both field and direction (e.g., 'carMovieYear,desc').");
+            throw new IllegalArgumentException("Sort parameter must have both field and direction (e.g., 'brand,desc').");
         }
 
         String property = sort[0];
@@ -56,34 +56,34 @@ public class CarsMoviesController{
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getCarsMovieById(@PathVariable UUID id){
-        return carsMoviesService.getMoviesById(id);
+    public ResponseEntity<?> getCarById(@PathVariable UUID id){
+        return expensiveCarService.getCarById(id);
     }
 
     @GetMapping("/search")
-    public ResponseEntity<?> getMoviesByName(
-            @RequestParam String movieName,
+    public ResponseEntity<?> getCarsByBrand(
+            @RequestParam String brand,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
-            @RequestParam(defaultValue = "carMovieName,asc") String[] sort) {
+            @RequestParam(defaultValue = "brand,asc") String[] sort) {
 
         Pageable pageable = PageRequest.of(page, size, Sort.by(parseSort(sort)));
-        return carsMoviesService.getMoviesByName(movieName, pageable);
+        return expensiveCarService.getCarsByBrand (brand, pageable);
     }
 
     @PostMapping
-    public ResponseEntity<?> insertCarsMovie(@Valid @RequestBody CarsMoviesEntity carsMoviesEntity){
-        return carsMoviesService.addMovie(carsMoviesEntity);
+    public ResponseEntity<?> insertCar(@Valid @RequestBody ExpensiveCarEntity expensiveCarEntity){
+        return expensiveCarService.addCar(expensiveCarEntity);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCarsMovie(@PathVariable UUID id, @Valid @RequestBody CarsMoviesEntity carsMoviesEntity){
-        return carsMoviesService.updateMovie(id,carsMoviesEntity);
+    public ResponseEntity<?> updateCar(@PathVariable UUID id, @Valid @RequestBody ExpensiveCarEntity expensiveCarEntity){
+        return expensiveCarService.updateCar(id,expensiveCarEntity);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCarsMovie(@PathVariable UUID id){
-        return carsMoviesService.deleteMovie(id);
+    public ResponseEntity<?> deleteCar(@PathVariable UUID id){
+        return expensiveCarService.deleteCar(id);
     }
 
 }
