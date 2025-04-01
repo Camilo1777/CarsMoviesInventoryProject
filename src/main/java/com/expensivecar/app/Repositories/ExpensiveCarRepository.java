@@ -1,10 +1,11 @@
-package com.carsmoviesinventory.app.Repositories;
+package com.expensivecar.app.Repositories;
 
-import com.carsmoviesinventory.app.Entities.ExpensiveCarEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.expensivecar.app.Entities.ExpensiveCarEntity;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package com.carsmoviesinventory.app.Entities;
+package com.expensivecar.app.Entities;
 
 import jakarta.validation.constraints.*;
 import com.fasterxml.jackson.annotation.JsonProperty;

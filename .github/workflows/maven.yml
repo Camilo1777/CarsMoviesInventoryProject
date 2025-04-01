@@ -44,8 +44,8 @@ jobs:
       - name: Upload JAR file
         uses: actions/upload-artifact@v4
         with:
-          name: spring-boot-carsmovies.jar
-          path: target/spring-boot-carsmovies.jar
+          name: spring-boot-expensivecar.jar
+          path: target/spring-boot-expensivecar.jar
 
       - name: List target directory contents
         run: ls -l target

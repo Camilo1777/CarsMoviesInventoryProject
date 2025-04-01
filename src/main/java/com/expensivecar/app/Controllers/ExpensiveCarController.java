@@ -1,7 +1,5 @@
-package com.carsmoviesinventory.app.Controllers;
+package com.expensivecar.app.Controllers;
 
-import com.carsmoviesinventory.app.Entities.ExpensiveCarEntity;
-import com.carsmoviesinventory.app.Services.ExpensiveCarService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -9,6 +7,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import com.expensivecar.app.Entities.ExpensiveCarEntity;
+import com.expensivecar.app.Services.ExpensiveCarService;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.carsmoviesinventory.app.Services;
+package com.expensivecar.app.Services;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.carsmoviesinventory.app.Repositories.ExpensiveCarRepository;
-import com.carsmoviesinventory.app.Entities.ExpensiveCarEntity;
+import com.expensivecar.app.Entities.ExpensiveCarEntity;
+import com.expensivecar.app.Repositories.ExpensiveCarRepository;
 
 import java.util.*;
 
